@@ -1,4 +1,5 @@
 import "./App.css";
+import CarouselEffect from "./components/Carousel/CarouselEffect";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <>
       <div>
         <Header />
+        <CarouselEffect />
       </div>
     </>
   );
