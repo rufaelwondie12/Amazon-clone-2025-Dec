@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classes from "./category.module.css";
 
 function CategoryCard({ data }) {
   return (
     <div className={classes.category}>
-      <a href="">
+      <Link to={`/category/${data.name}`} key={data.name}>
         <div>
           <span>
             <h2>{data.title}</h2>
@@ -12,7 +13,7 @@ function CategoryCard({ data }) {
           <img src={data.imageLink} alt="" />
           <p>shop now</p>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
