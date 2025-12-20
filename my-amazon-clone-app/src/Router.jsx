@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./Pages/Landing/Landing"; // Main landing page
-import Signup from "./Pages/Auth/Signup"; // Signup page
+import Auth from "./Pages/Auth/Auth"; // Signup page
 import Payment from "./Pages/Payment/Payment"; // Payment processing page
 import Orders from "./Pages/Orders/Orders"; // Orders history page
 import Cart from "./Pages/Cart/Cart"; // Shopping cart page
@@ -14,7 +14,7 @@ function Routing() {
       {/* Set the basename for proper routing */}
       <Routes>
         <Route path="/" element={<Landing />} /> {/* Main entry point */}
-        <Route path="/auth" element={<Signup />} /> {/* User signup */}
+        <Route path="/auth" element={<Auth />} /> {/* User signup */}
         <Route path="/payments" element={<Payment />} />{" "}
         {/* Process payments */}
         <Route path="/orders" element={<Orders />} /> {/* User order history */}
