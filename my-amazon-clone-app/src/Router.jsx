@@ -7,6 +7,12 @@ import Orders from "./Pages/Orders/Orders"; // Orders history page
 import Cart from "./Pages/Cart/Cart"; // Shopping cart page
 import Results from "./Pages/Results/Results"; // Results page based on category
 import ProductDetail from "./Pages/ProductDetail/ProductDetail"; // Detailed view of a product
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51SYgNQEgQlkhwoAdIzBSMDCyjmUQcXtUZs80x2V2kckEeqAfziiYkIPo3g1AHPvtiCO0xGSK9Xl7WiP6WXFPq04500WeDKTPms"
+);
 
 function Routing() {
   return (
@@ -15,8 +21,14 @@ function Routing() {
       <Routes>
         <Route path="/" element={<Landing />} /> {/* Main entry point */}
         <Route path="/auth" element={<Auth />} /> {/* User signup */}
-        <Route path="/payments" element={<Payment />} />{" "}
-        {/* Process payments */}
+        <Route
+          path="/payments"
+          element={
+            <Elements stripe={stripePromise}>
+              <Payment />
+            </Elements>
+          }
+        />
         <Route path="/orders" element={<Orders />} /> {/* User order history */}
         <Route path="/category/:categoryName" element={<Results />} />{" "}
         {/* Results by category */}
