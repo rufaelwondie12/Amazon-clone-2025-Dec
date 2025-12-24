@@ -11,7 +11,7 @@ import { db } from "../../Utility/firebase";
 import { useNavigate } from "react-router-dom";
 
 function Payment() {
-  const [{ user, basket }] = useContext(DataContext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
   const total = basket.reduce((amount, item) => {
     return item.price * item.amount + amount;
@@ -62,6 +62,7 @@ function Payment() {
           created: paymentIntent.created,
         });
 
+      dispatch({ type: Type.EMPTY_BASKET });
       setProcessing(false);
       navigate("/orders", {
         state: { msg: "you have places new order" },
